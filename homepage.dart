@@ -218,3 +218,13 @@ child: Text(
         children: [
           Icon(icon, color: _getIconColor(icon)),
           SizedBox(width: 10),
+ Expanded(
+            child: Text(
+              text,
+              style: TextStyle(fontSize: 16),
+            ),
+          ),
+        ],
+      ),
+    );
+  }

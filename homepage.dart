@@ -208,3 +208,13 @@ child: Text(
     );
   }
 
+// Other methods...
+}
+
+  Widget _buildRow(IconData icon, String text) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Row(
+        children: [
+          Icon(icon, color: _getIconColor(icon)),
+          SizedBox(width: 10),

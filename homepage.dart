@@ -120,6 +120,18 @@ class _HomepageState extends State<Homepage> {
               Container(
                 margin: EdgeInsets.all(20),
                 padding: EdgeInsets.all(20),
-     
+      decoration: BoxDecoration(
+                  color: Colors.white, // Changed background color to white
+                  borderRadius: BorderRadius.circular(10), // Reduced border radius
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.3), // Lightened shadow color
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
+                ),
+               
 
         

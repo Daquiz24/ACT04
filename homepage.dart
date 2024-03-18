@@ -35,3 +35,12 @@ class _HomepageState extends State<Homepage> {
   String? cell;
   String? idName;
   String? idValue;
+// Rest of your code
+  // Initialize data as List<dynamic> or null.
+
+  @override
+  void initState() {
+    super.initState();
+    data = []; // Initialize data as empty list.
+    getData(); // Call getData when the widget initializes.
+  }

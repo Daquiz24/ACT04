@@ -159,4 +159,13 @@ class _HomepageState extends State<Homepage> {
                     ),
                   ],
                 ),
-        
+         child: Column(
+                  children: [
+                    _buildRow(Icons.pin_drop_outlined, 'Country: $country'),
+                    _buildRow(
+                      (gender == 'male')
+                          ? Icons.male_outlined
+                          : Icons.female_outlined,
+                      'Gender: $gender',
+                    ),
+               

@@ -69,4 +69,12 @@ class _HomepageState extends State<Homepage> {
           city = data![0]['results'][0]['location']['city'];
           state = data![0]['results'][0]['location']['state'];
           postcode = data![0]['results'][0]['location']['postcode'].toString();
+           latitude = data![0]['results'][0]['location']['coordinates']['latitude'];
+          longitude = data![0]['results'][0]['location']['coordinates']['longitude'];
+          timezoneOffset = data![0]['results'][0]['location']['timezone']['offset'];
+          timezoneDescription = data![0]['results'][0]['location']['timezone']['description'];
+          dobDate = data![0]['results'][0]['dob']['date'];
+          dobAge = data![0]['results'][0]['dob']['age'].toString();
+          registeredDate = data![0]['results'][0]['registered']['date'];
+         
         

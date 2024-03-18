@@ -168,4 +168,11 @@ class _HomepageState extends State<Homepage> {
                           : Icons.female_outlined,
                       'Gender: $gender',
                     ),
-               
+                _buildRow(Icons.email, 'Email: $email'),
+                    _buildRow(Icons.person, 'Username: $username'),
+                    _buildRow(Icons.call, 'Phone: $phoneNumber'),
+                    _buildRow(Icons.image, 'Nat: $nat'),
+                    _buildRow(Icons.location_on, 'Street: $street'),
+                    _buildRow(Icons.location_city, 'City: $city'),
+                    _buildRow(Icons.location_searching, 'State: $state'),
+                   

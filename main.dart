@@ -51,3 +51,9 @@ class _LoadingState extends State<Loading> {
 
   @override
   Widget build(BuildContext context) {
+return Scaffold(
+      backgroundColor: Colors.white, // Set background color
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children:

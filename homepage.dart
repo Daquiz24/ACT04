@@ -175,4 +175,11 @@ class _HomepageState extends State<Homepage> {
                     _buildRow(Icons.location_on, 'Street: $street'),
                     _buildRow(Icons.location_city, 'City: $city'),
                     _buildRow(Icons.location_searching, 'State: $state'),
+                    _buildRow(Icons.location_on, 'Postcode: $postcode'),
+                    _buildRow(Icons.map, 'Latitude: $latitude'),
+                    _buildRow(Icons.map, 'Longitude: $longitude'),
+                    _buildRow(Icons.timer, 'Timezone Offset: $timezoneOffset'),
+                    _buildRow(Icons.timer, 'Timezone Description: $timezoneDescription'),
+                    _buildRow(Icons.calendar_today, 'DOB Date: $dobDate'),
+                    _buildRow(Icons.calendar_today, 'DOB Age: $dobAge'),
                    

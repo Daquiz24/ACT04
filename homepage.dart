@@ -16,3 +16,11 @@ class _HomepageState extends State<Homepage> {
   String? name;
   String? country;
   String? gender;
+ String? email;
+  String? username;
+  String? phoneNumber;
+  String? nat;
+  String? street;
+  String? city;
+  String? state;
+ 

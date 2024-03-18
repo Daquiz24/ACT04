@@ -54,3 +54,11 @@ class _HomepageState extends State<Homepage> {
         setState(() {
           data = [jsonDecode(response.body)];
         });
+ print(data![0]['results'][0]['phone']);
+        String image = data![0]['results'][0]['picture']['large'];
+        setState(() {
+
+          name = data![0]['results'][0]['name']['title'] + '. ' + data![0]['results'][0]['name']['first'] +' '+ data![0]['results'][0]['name']['last'];
+          country = data![0]['results'][0]['location']['country'];
+          gender = data![0]['results'][0]['gender'];
+          email = data![0]['results'][0]['email'];

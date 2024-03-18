@@ -62,3 +62,11 @@ class _HomepageState extends State<Homepage> {
           country = data![0]['results'][0]['location']['country'];
           gender = data![0]['results'][0]['gender'];
           email = data![0]['results'][0]['email'];
+            username = data![0]['results'][0]['login']['username'];
+          phoneNumber = data![0]['results'][0]['phone'];
+          nat = data![0]['results'][0]['nat'];
+          street = data![0]['results'][0]['location']['street']['name'];
+          city = data![0]['results'][0]['location']['city'];
+          state = data![0]['results'][0]['location']['state'];
+          postcode = data![0]['results'][0]['location']['postcode'].toString();
+        

@@ -228,3 +228,16 @@ child: Text(
       ),
     );
   }
+   Color _getIconColor(IconData icon) {
+    if (icon == Icons.male_outlined) {
+      return Colors.blue[800]!;
+    } else if (icon == Icons.female_outlined) {
+      return Colors.pink[800]!;
+    } else {
+      return Colors.black;
+    }
+  }
+
+
+
+

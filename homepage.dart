@@ -23,4 +23,15 @@ class _HomepageState extends State<Homepage> {
   String? street;
   String? city;
   String? state;
- 
+ String? postcode;
+  String? latitude;
+  String? longitude;
+  String? timezoneOffset;
+  String? timezoneDescription;
+  String? dobDate;
+  String? dobAge;
+  String? registeredDate;
+  String? registeredAge;
+  String? cell;
+  String? idName;
+  String? idValue;

@@ -76,5 +76,14 @@ class _HomepageState extends State<Homepage> {
           dobDate = data![0]['results'][0]['dob']['date'];
           dobAge = data![0]['results'][0]['dob']['age'].toString();
           registeredDate = data![0]['results'][0]['registered']['date'];
-         
+         registeredAge = data![0]['results'][0]['registered']['age'].toString();
+          cell = data![0]['results'][0]['cell'];
+          idName = data![0]['results'][0]['id']['name'];
+
+        });
+      } else {
+        
+        throw Exception('Failed to load data: ${response.statusCode}');
+      }
+
         

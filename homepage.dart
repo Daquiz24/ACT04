@@ -44,3 +44,13 @@ class _HomepageState extends State<Homepage> {
     data = []; // Initialize data as empty list.
     getData(); // Call getData when the widget initializes.
   }
+  
+  Future<void> getData() async {
+    try {
+      final response = await http.get(Uri.parse(url)).timeout(Duration(seconds: 3));
+      print("connected");
+
+      if (response.statusCode == 200) {
+        setState(() {
+          data = [jsonDecode(response.body)];
+        });

@@ -132,6 +132,16 @@ class _HomepageState extends State<Homepage> {
                     ),
                   ],
                 ),
-               
+               child: Column(
+                  children: [
+                    ClipOval(child: Image.network(data![0]['results'][0]['picture']['large'], width: 120, height: 120, fit: BoxFit.cover)),
+                    SizedBox(height: 20),
+                    Text(
+                      '$name',
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),
+                    )
+                  ],
+                ),
+              ),
 
         

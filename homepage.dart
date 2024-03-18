@@ -94,5 +94,16 @@ class _HomepageState extends State<Homepage> {
           title: Text('Message'),
           content: Text('Failed to fetch data. Please check your internet connection.'),
           actions: [
+ TextButton(onPressed: (){
+              getData();
+              Navigator.pop(context);
+            }, child: Text('Retry'))
+          ],
+        );
+      });
+    }
+  }
+
+
 
         

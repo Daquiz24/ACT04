@@ -143,5 +143,12 @@ class _HomepageState extends State<Homepage> {
                   ],
                 ),
               ),
-
+  if (data != null && data!.isNotEmpty) // Check if data is not null and not empty.
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+          
         

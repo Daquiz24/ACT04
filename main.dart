@@ -42,3 +42,12 @@ class _LoadingState extends State<Loading> {
       );
     }
   }
+
+@override
+  void initState() {
+    getData(); // will run at the start of the application
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {

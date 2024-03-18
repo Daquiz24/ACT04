@@ -59,11 +59,24 @@ return Scaffold(
           children:
             Image.network(
               'https://cdn.dribbble.com/users/2153417/screenshots/5894065/loading_circle.gif',
-              width: 100, // Custom width
-              height: 100, // Custom height
+              width: 100, 
+              height: 100, 
             ),
-            SizedBox(height: 20), // Add some space between the image and text
+            SizedBox(height: 20), 
             Text(
               'Fetching Data...',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          
+          ),
+            SizedBox(height: 20), 
+            LinearProgressIndicator(
+              color: Colors.black,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+

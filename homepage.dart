@@ -82,8 +82,17 @@ class _HomepageState extends State<Homepage> {
 
         });
       } else {
-        
+
         throw Exception('Failed to load data: ${response.statusCode}');
       }
+
+      await Future.delayed(Duration(seconds: 3));
+    } catch(e) {
+      print(e);
+      showDialog(context: context, builder: (context){
+        return AlertDialog(
+          title: Text('Message'),
+          content: Text('Failed to fetch data. Please check your internet connection.'),
+          actions: [
 
         

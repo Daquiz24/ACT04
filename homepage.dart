@@ -191,4 +191,20 @@ class _HomepageState extends State<Homepage> {
               ),
             if (data == null || data!.isEmpty)
               Center(
+child: Text(
+                  'No data available',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+          ],
+        ),
+        onRefresh: getData,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: getData, // Trigger getData function on button press
+        tooltip: 'Refresh', // Tooltip to show on hover
+        child: Icon(Icons.refresh), // Icon for the button
+      ),
+    );
+  }
 

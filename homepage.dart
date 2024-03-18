@@ -182,4 +182,13 @@ class _HomepageState extends State<Homepage> {
                     _buildRow(Icons.timer, 'Timezone Description: $timezoneDescription'),
                     _buildRow(Icons.calendar_today, 'DOB Date: $dobDate'),
                     _buildRow(Icons.calendar_today, 'DOB Age: $dobAge'),
-                   
+                    _buildRow(Icons.calendar_today, 'Registered Date: $registeredDate'),
+                    _buildRow(Icons.calendar_today, 'Registered Age: $registeredAge'),
+
+
+                  ],
+                ),
+              ),
+            if (data == null || data!.isEmpty)
+              Center(
+

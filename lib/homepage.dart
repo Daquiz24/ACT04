@@ -1,0 +1,241 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'variable.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
+class Homepage extends StatefulWidget {
+  const Homepage({Key? key}) : super(key: key);
+
+  @override
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
+  List<dynamic>? data;
+  String? name;
+  String? country;
+  String? gender;
+  String? email;
+  String? username;
+  String? phoneNumber;
+  String? nat;
+  String? street;
+  String? city;
+  String? state;
+  String? postcode;
+  String? latitude;
+  String? longitude;
+  String? timezoneOffset;
+  String? timezoneDescription;
+  String? dobDate;
+  String? dobAge;
+  String? registeredDate;
+  String? registeredAge;
+  String? cell;
+  String? idName;
+
+// Rest of your code
+  // Initialize data as List<dynamic> or null.
+
+  @override
+  void initState() {
+    super.initState();
+    data = null; // Initialize data as empty list.
+  }
+
+  Future<void> getData() async {
+    try {
+      final response = await http.get(Uri.parse(url)).timeout(Duration(seconds: 3));
+      print("connected");
+
+      if (response.statusCode == 200) {
+        setState(() {
+          data = [jsonDecode(response.body)];
+        });
+
+        if (data != null && data!.isNotEmpty) {
+          String image = data![0]['results'][0]['picture']['large'];
+          setState(() {
+            name = data![0]['results'][0]['name']['title'] + '. ' + data![0]['results'][0]['name']['first'] +' '+ data![0]['results'][0]['name']['last'];
+            country = data![0]['results'][0]['location']['country'];
+            gender = data![0]['results'][0]['gender'];
+            email = data![0]['results'][0]['email'];
+            username = data![0]['results'][0]['login']['username'];
+            phoneNumber = data![0]['results'][0]['phone'];
+            nat = data![0]['results'][0]['nat'];
+            street = data![0]['results'][0]['location']['street']['name'];
+            city = data![0]['results'][0]['location']['city'];
+            state = data![0]['results'][0]['location']['state'];
+            postcode = data![0]['results'][0]['location']['postcode'].toString();
+            latitude = data![0]['results'][0]['location']['coordinates']['latitude'];
+            longitude = data![0]['results'][0]['location']['coordinates']['longitude'];
+            timezoneOffset = data![0]['results'][0]['location']['timezone']['offset'];
+            timezoneDescription = data![0]['results'][0]['location']['timezone']['description'];
+            dobDate = data![0]['results'][0]['dob']['date'];
+            dobAge = data![0]['results'][0]['dob']['age'].toString();
+            registeredDate = data![0]['results'][0]['registered']['date'];
+            registeredAge = data![0]['results'][0]['registered']['age'].toString();
+            cell = data![0]['results'][0]['cell'];
+            idName = data![0]['results'][0]['id']['name'];
+          });
+        }
+      } else {
+        // Handle server error
+        throw Exception('Failed to load data: ${response.statusCode}');
+      }
+
+      await Future.delayed(Duration(seconds: 3));
+    } catch(e) {
+      print(e);
+      showDialog(context: context, builder: (context){
+        return AlertDialog(
+          title: Text('Message'),
+          content: Text('Failed to fetch data. Please check your internet connection.'),
+          actions: [
+            TextButton(onPressed: (){
+              getData();
+              Navigator.pop(context);
+            }, child: Text('Retry'))
+          ],
+        );
+      });
+    }
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey[100],
+      appBar: AppBar(
+        backgroundColor: Colors.grey[100],
+        title: Text('Home'),
+        centerTitle: true,
+      ),
+      body: RefreshIndicator(
+        child: ListView(
+          children: [
+            if (data != null && data!.isNotEmpty) // Check if data is not null and not empty.
+              Container(
+                margin: EdgeInsets.all(20),
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.white, // Changed background color to white
+                  borderRadius: BorderRadius.circular(10), // Reduced border radius
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.3), // Lightened shadow color
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    ClipOval(child: Image.network(data![0]['results'][0]['picture']['large'], width: 120, height: 120, fit: BoxFit.cover)),
+                    SizedBox(height: 20),
+                    Text(
+                      '$name',
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),
+                    )
+                  ],
+                ),
+              ),
+            if (data != null && data!.isNotEmpty) // Check if data is not null and not empty.
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    _buildRow(Icons.pin_drop_outlined, 'Country: $country'),
+                    _buildRow(
+                      (gender == 'male')
+                          ? Icons.male_outlined
+                          : Icons.female_outlined,
+                      'Gender: $gender',
+                    ),
+                    _buildRow(Icons.email, 'Email: $email'),
+                    _buildRow(Icons.person, 'Username: $username'),
+                    _buildRow(Icons.call, 'Phone: $phoneNumber'),
+                    _buildRow(Icons.image, 'Nat: $nat'),
+                    _buildRow(Icons.location_on, 'Street: $street'),
+                    _buildRow(Icons.location_city, 'City: $city'),
+                    _buildRow(Icons.location_searching, 'State: $state'),
+                    _buildRow(Icons.location_on, 'Postcode: $postcode'),
+                    _buildRow(Icons.map, 'Latitude: $latitude'),
+                    _buildRow(Icons.map, 'Longitude: $longitude'),
+                    _buildRow(Icons.timer, 'Timezone Offset: $timezoneOffset'),
+                    _buildRow(Icons.timer, 'Timezone Description: $timezoneDescription'),
+                    _buildRow(Icons.calendar_today, 'DOB Date: $dobDate'),
+                    _buildRow(Icons.calendar_today, 'DOB Age: $dobAge'),
+                    _buildRow(Icons.calendar_today, 'Registered Date: $registeredDate'),
+                    _buildRow(Icons.calendar_today, 'Registered Age: $registeredAge'),
+
+
+                  ],
+                ),
+              ),
+            if (data == null || data!.isEmpty)
+              Center(
+                child: Text(
+                  'No data available',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+          ],
+        ),
+        onRefresh: getData,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: getData, // Trigger getData function on button press
+        tooltip: 'Refresh', // Tooltip to show on hover
+        child: Icon(Icons.refresh), // Icon for the button
+      ),
+    );
+  }
+
+// Other methods...
+}
+
+  Widget _buildRow(IconData icon, String text) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Row(
+        children: [
+          Icon(icon, color: _getIconColor(icon)),
+          SizedBox(width: 10),
+          Expanded(
+            child: Text(
+              text,
+              style: TextStyle(fontSize: 16),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Color _getIconColor(IconData icon) {
+    if (icon == Icons.male_outlined) {
+      return Colors.blue[800]!;
+    } else if (icon == Icons.female_outlined) {
+      return Colors.pink[800]!;
+    } else {
+      return Colors.black;
+    }
+  }
+
